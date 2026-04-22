@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 /*
  * Sehr geehrter Herr Raketenwissenschaftler,
@@ -35,6 +36,11 @@ List<int> massesArray = massesArrayString.Select(int.Parse).ToList();
 // 
 int totalFuel = 0;
 
+foreach(var mass in massesArray)
+{
+    int fuel = (mass / 3) - 2;
+    totalFuel += fuel;
+}
 Console.WriteLine("Gesamt benötigter Treibstoff: " + totalFuel);
 // totalFuel sollte 3178783 ergeben
 

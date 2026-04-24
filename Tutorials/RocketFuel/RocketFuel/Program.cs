@@ -61,6 +61,18 @@ Console.WriteLine("Gesamt benötigter Treibstoff: " + totalFuel);
 // ***********
 
 int totalFuel2 = 0;
+
+foreach(var mass in massesArray)
+{
+    int fuel = (mass / 3) - 2;
+    while(fuel > 0)
+    {
+        totalFuel2 += fuel;
+        fuel = (fuel / 3) - 2;
+    }
+}
+
+
 // totalFuel2 sollte 4765294 ergeben
 
 Console.WriteLine("Gesamt benötigter Treibstoff (Korrektur): " + totalFuel2);

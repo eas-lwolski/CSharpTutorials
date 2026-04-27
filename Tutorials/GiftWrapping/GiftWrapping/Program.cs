@@ -29,6 +29,20 @@ int giftBand = 0;
 // Das Ergebnis ist 1606483
 // ***********
 
+foreach(var box in boxData)
+{
+    // Maße des Pakets in ein int-array konvertieren
+    List<int> dimensions = box.Split('x').Select(int.Parse).ToList();
+
+    // Oberfläche des Pakets berechnen
+    int surfaceArea = 2 * dimensions[0] * dimensions[1] + 2 * dimensions[1] * dimensions[2] + 2 * dimensions[0] * dimensions[2];
+
+    // Fläche der kleinsten Seite berechnen
+    int smallestSideArea = dimensions.OrderBy(x => x).Take(2).Aggregate((a, b) => a * b);
+
+    // Benötigtes Geschenkpapier für das Paket berechnen
+    wrappingPaper += surfaceArea + smallestSideArea;
+}
 
 
 
@@ -50,6 +64,22 @@ int giftBand = 0;
 // Wieviel Geschenkband berechnet Jeff für alle 1000 Pakete?
 // Das Ergebnis ist 3842356
 // ***********
+
+
+foreach(var box in boxData)
+{
+    // Maße des Pakets in ein int-array konvertieren
+    List<int> dimensions = box.Split('x').Select(int.Parse).ToList();
+
+    // Kürzeste Strecke um das Paket berechnen
+    int shortestDistance = 2 * dimensions.OrderBy(x => x).Take(2).Sum();
+
+    // Produkt der drei Seiten für die Schleife berechnen
+    int bowLength = dimensions.Aggregate((a, b) => a * b);
+
+    // Benötigtes Geschenkband für das Paket berechnen
+    giftBand += shortestDistance + bowLength;
+}
 
 Console.WriteLine("Geschenkpapier gesamt: " + wrappingPaper);
 Console.WriteLine("Geschenkband gesamt: " + giftBand);
